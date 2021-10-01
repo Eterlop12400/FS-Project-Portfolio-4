@@ -3,9 +3,9 @@ import Card from './Card';
 
 function API(props) {
 
-    // Setting up our state and leaving it null when we load the page.
-    const [pokemonNameAndImage, setPokemonNameAndImage] = useState(null);
-    const [pokemonDescription, setPokemonDescription] = useState(null);
+    // Setting up our state and leaving it empty when we load the page.
+    const [pokemonNameAndImage, setPokemonNameAndImage] = useState({species: {name: ''}, sprites: {front_default: ''}});
+    const [pokemonDescription, setPokemonDescription] = useState({flavor_text_entries: [{flavor_text: ''}]});
 
     // Setting the url for our API call based on the props being passed in from Search.js.
     let urlForNameAndImage = `https://pokeapi.co/api/v2/pokemon/${props.url}`;
@@ -46,9 +46,9 @@ function API(props) {
     return (
         <div>
             <Card
-                name={pokemonNameAndImage && pokemonNameAndImage.species.name ? pokemonNameAndImage.species.name : ""}
-                image={pokemonNameAndImage && pokemonNameAndImage.sprites.front_default ? pokemonNameAndImage.sprites.front_default : ''}
-                description={pokemonDescription && pokemonDescription.flavor_text_entries[0].flavor_text ? pokemonDescription.flavor_text_entries[0].flavor_text : ""}
+                name={pokemonNameAndImage.species.name}
+                image={pokemonNameAndImage.sprites.front_default}
+                description={pokemonDescription.flavor_text_entries[0].flavor_text}
             />
             <p className='error-msg'>Please Enter A Pokemon Name. ex. charmander</p>
         </div>
