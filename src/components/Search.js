@@ -2,15 +2,15 @@ import React, {useState} from 'react';
 import Api from "./API";
 
 function Search() {
-    const [pokemonName, setPokemonName] = useState(null);
+    const [cardName, setCardName] = useState(null);
 
     // This function will take the value of the input and set it to the state if not left blank.
     function handleClick () {
-        let inputElm = document.querySelector('.pokemonInput');
+        let inputElm = document.querySelector('.cardInput');
         let inputValue = inputElm.value.toLowerCase();
 
         if (inputValue !== '') {
-            setPokemonName(inputValue);
+            setCardName(inputValue);
         }
 
         inputElm.value = '';
@@ -18,9 +18,9 @@ function Search() {
 
     return (
         <div className='test'>
-            <input className='pokemonInput' type='text' />
+            <input className='cardInput' type='text' />
             <button onClick={handleClick}>Search!</button>
-            <Api url={pokemonName} />
+            <Api url={cardName} />
         </div>
     );
 }

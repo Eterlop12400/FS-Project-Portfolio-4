@@ -4,12 +4,10 @@ import Card from './Card';
 function API(props) {
 
     // Setting up our state and leaving it empty when we load the page.
-    const [pokemonNameAndImage, setPokemonNameAndImage] = useState({species: {name: ''}, sprites: {front_default: ''}});
-    const [pokemonDescription, setPokemonDescription] = useState({flavor_text_entries: [{flavor_text: ''}]});
+    const [cardDetails, setCardDetails] = useState({data: [{name: '', type: '', card_images: [{image_url_small: ''}], desc: ''}]});
 
     // Setting the url for our API call based on the props being passed in from Search.js.
-    let urlForNameAndImage = `https://pokeapi.co/api/v2/pokemon/${props.url}`;
-    let urlForDescription = `https://pokeapi.co/api/v2/pokemon-species/${props.url}`;
+    let urlForCardDetails = `https://db.ygoprodeck.com/api/v7/cardinfo.php?name=${props.url}`;
 
 
     // Using fetch, async, and await to get our API information. We are calling the function below.
@@ -18,39 +16,35 @@ function API(props) {
 
             // We will not call the API if the value is null like it is on the initial page load.
             if (props.url !== null) {
-                const responseForNameAndImage = await fetch(urlForNameAndImage);
-                const responseForDescription = await fetch(urlForDescription);
+                const responseForCardDetails = await fetch(urlForCardDetails);
 
                 document.querySelector('.error-msg').innerText = '';
 
                 // We will check the response status of our fetch call, if we get a 404 error an error message will appear.
-                if (responseForNameAndImage.status === 404 || responseForDescription.status === 404) {
-                    document.querySelector('.error-msg').innerText = 'That Pokemon does not exist, try again!';
+                if (responseForCardDetails.status === 404 || responseForCardDetails.status === 400) {
+                    document.querySelector('.error-msg').innerText = 'That card does not exist, try again!';
                 } else {
-                    const nameAndImageData = await responseForNameAndImage.json();
-                    const descriptionData = await responseForDescription.json();
-                    let description = [];
-                    let nameAndImage = [];
+                    const cardJsonData = await responseForCardDetails.json();
+                    let cardInfo = [];
 
-                    nameAndImage = nameAndImageData;
-                    description = descriptionData
+                    cardInfo = cardJsonData;
 
-                    setPokemonNameAndImage(nameAndImage);
-                    setPokemonDescription(description);
+                    setCardDetails(cardInfo);
                 }
             }
         }
         fetchAPI();
-    }, [urlForNameAndImage, urlForDescription, props.url]);
+    }, [urlForCardDetails, props.url]);
 
     return (
         <div>
             <Card
-                name={pokemonNameAndImage.species.name}
-                image={pokemonNameAndImage.sprites.front_default}
-                description={pokemonDescription.flavor_text_entries[0].flavor_text}
+                name={cardDetails.data[0].name}
+                image={cardDetails.data[0].card_images[0].image_url_small}
+                type={cardDetails.data[0].type}
+                description={cardDetails.data[0].desc}
             />
-            <p className='error-msg'>Please Enter A Pokemon Name. ex. charmander</p>
+            <p className='error-msg'>Please enter a card name. ex. Dark Magician</p>
         </div>
     );
 }
