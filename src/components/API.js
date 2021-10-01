@@ -18,16 +18,16 @@ function API(props) {
 
             // We will not call the API if the value is null like it is on the initial page load.
             if (props.url !== null) {
-                const response = await fetch(urlForNameAndImage);
+                const responseForNameAndImage = await fetch(urlForNameAndImage);
                 const responseForDescription = await fetch(urlForDescription);
 
                 document.querySelector('.error-msg').innerText = '';
 
                 // We will check the response status of our fetch call, if we get a 404 error an error message will appear.
-                if (response.status === 404 || responseForDescription.status === 404) {
+                if (responseForNameAndImage.status === 404 || responseForDescription.status === 404) {
                     document.querySelector('.error-msg').innerText = 'That Pokemon does not exist, try again!';
                 } else {
-                    const nameAndImageData = await response.json();
+                    const nameAndImageData = await responseForNameAndImage.json();
                     const descriptionData = await responseForDescription.json();
                     let description = [];
                     let nameAndImage = [];
