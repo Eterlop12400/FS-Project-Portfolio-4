@@ -15,4 +15,4 @@ Connect with me! : [LinkedIn](https://www.linkedin.com/in/eric-terlop-8b91101a7/
 ___
 
 ## Week 1: Proof of Concept
-This week the focus was on making sure the API choosen will work. I added a text input where a user can enter a name and it will display data from the API. The framework I am using is React.js.
+This week the focus was on making sure the API chosen will work. I added a text input where a user can enter a name and based on that information it will display data from the API. The framework I am using is React.js.
