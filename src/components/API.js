@@ -20,8 +20,8 @@ function API(props) {
 
                 document.querySelector('.error-msg').innerText = '';
 
-                // We will check the response status of our fetch call, if we get a 404 error an error message will appear.
-                if (responseForCardDetails.status === 404 || responseForCardDetails.status === 400) {
+                // We will check the response status of our fetch call, if we get a GET error an error message will appear.
+                if (responseForCardDetails.status !== 200) {
                     document.querySelector('.error-msg').innerText = 'That card does not exist, try again!';
                 } else {
                     const cardJsonData = await responseForCardDetails.json();
