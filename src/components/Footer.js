@@ -14,7 +14,7 @@ const styles = {
     footer: {
         backgroundColor: 'black',
         color: 'white',
-        height: '100px',
+        height: '116px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

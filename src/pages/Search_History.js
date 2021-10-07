@@ -5,16 +5,23 @@ import React from "react";
 function SearchHistory() {
 
     return (
-        <section>
+        <main style={styles.container}>
             <h2 style={styles.body}>This is the Search History page!</h2>
-        </section>
+        </main>
     );
 }
 
 export default SearchHistory;
 
 const styles = {
+    container: {
+        width: '50%',
+        backgroundColor: '#FDF5D9',
+        margin: '0px auto',
+        height: '800px',
+    },
     body: {
         textAlign: 'center',
+        marginTop: '0',
     },
 }

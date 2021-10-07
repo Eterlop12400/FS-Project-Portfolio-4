@@ -38,6 +38,8 @@ function API(props) {
 
     return (
         <div>
+            <p>OR</p>
+
             <Card
                 name={cardDetails.data[0].name}
                 image={cardDetails.data[0].card_images[0].image_url_small}
