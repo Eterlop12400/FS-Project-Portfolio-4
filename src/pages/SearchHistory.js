@@ -4,8 +4,9 @@ import CardHistory from "../components/CardHistory";
 
 function SearchHistory() {
 
-    const [searchHistory, setSearchHistory] = useState(JSON.parse(localStorage.getItem('cardSearchHistory')) || []);
+    const [searchHistory] = useState(JSON.parse(localStorage.getItem('cardSearchHistory')) || []);
 
+    // Looping through the items in the searchHistory and making a CardHistory component for each one.
     let history = searchHistory.map((element, i) => {
         return <CardHistory cardName={searchHistory[i].cardName} img={searchHistory[i].cardImg} key={i} />
     })
@@ -31,6 +32,7 @@ function SearchHistory() {
 
 export default SearchHistory;
 
+// CSS Modules
 const styles = {
     container: {
         width: '75%',
