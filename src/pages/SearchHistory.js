@@ -62,7 +62,7 @@ const styles = {
     contentContainer: {
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
     },
     headerContainer: {
         paddingTop: '50px',
