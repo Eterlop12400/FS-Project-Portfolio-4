@@ -131,6 +131,7 @@ function API(props) {
                 starLevel={cardDetails.data[0].level}
                 attribute={cardDetails.data[0].attribute}
                 race={cardDetails.data[0].race}
+                imgAlt={cardDetails.data[0].name}
             /> }
 
             {/*  If the toggle is set to false it will display API structure based on the random call.  */}
@@ -144,6 +145,7 @@ function API(props) {
                 starLevel={randomCardDetails.level}
                 attribute={randomCardDetails.attribute}
                 race={randomCardDetails.race}
+                imgAlt={randomCardDetails.name}
             /> }
             </div>
         </div>
