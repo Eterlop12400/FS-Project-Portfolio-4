@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Import Component
+// React Component
 import Nav from './Nav';
 
 function Header(props) {
