@@ -3,69 +3,65 @@ import React from 'react';
 function Card(props) {
     return (
         <div style={styles.wrapper}>
-        <div style={styles.container}>
-            <div style={styles.headerContainer}>
-                <h2 style={styles.header}>{props.name}</h2>
-            </div>
+            <section style={styles.container}>
+                <header style={styles.headerContainer}>
+                    <h2 style={styles.headerTxt}>{props.name}</h2>
+                </header>
 
-            <section style={styles.section}>
-            <div style={styles.sectionColumnOne}>
-                <img style={styles.cardImg} src={props.image} alt={props.imgAlt}/>
-            </div>
-
-            <div style={styles.sectionColumnTwo}>
-
-                <div style={styles.halfRow}>
-                    <div style={styles.splitRow}>
-                        <h3 style={styles.cardInfoTitle}>Attribute</h3>
-                        <p style={styles.cardInfo}>{props.attribute}</p>
+                <section style={styles.section}>
+                    <div style={styles.sectionColumnOne}>
+                        <img style={styles.cardImg} src={props.image} alt={props.imgAlt}/>
                     </div>
 
-                    <div style={styles.splitRow}>
-                        <h3 style={styles.cardInfoTitle}>Level</h3>
-                        <p style={styles.cardInfo}>{props.starLevel}</p>
-                    </div>
-                </div>
+                    <section style={styles.sectionColumnTwo}>
+                        <section style={styles.halfRow}>
+                            <section style={styles.splitRow}>
+                                <h3 style={styles.cardInfoTitle}>Attribute</h3>
+                                <p style={styles.cardInfoDetails}>{props.attribute}</p>
+                            </section>
 
-                <div style={styles.row}>
-                    <h3 style={styles.cardInfoTitle}>Card Type</h3>
-                    <p style={styles.cardInfo}>{props.type}</p>
-                </div>
+                            <section style={styles.splitRow}>
+                                <h3 style={styles.cardInfoTitle}>Level</h3>
+                                <p style={styles.cardInfoDetails}>{props.starLevel}</p>
+                            </section>
+                        </section>
 
-                <div style={styles.row}>
-                    <h3 style={styles.cardInfoTitle}>Sub Type</h3>
-                    <p style={styles.cardInfo}>{props.race}</p>
-                </div>
+                        <section style={styles.row}>
+                            <h3 style={styles.cardInfoTitle}>Card Type</h3>
+                            <p style={styles.cardInfoDetails}>{props.type}</p>
+                        </section>
 
-                <div style={styles.halfRow}>
-                    <div style={styles.splitRow}>
-                        <h3 style={styles.cardInfoTitle}>ATK</h3>
-                        <p style={styles.cardInfo}>{props.atk}</p>
-                    </div>
+                        <section style={styles.row}>
+                            <h3 style={styles.cardInfoTitle}>Sub Type</h3>
+                            <p style={styles.cardInfoDetails}>{props.race}</p>
+                        </section>
 
-                    <div style={styles.splitRow}>
-                        <h3 style={styles.cardInfoTitle}>DEF</h3>
-                        <p style={styles.cardInfo}>{props.def}</p>
-                    </div>
-                </div>
+                        <section style={styles.halfRow}>
+                            <section style={styles.splitRow}>
+                                <h3 style={styles.cardInfoTitle}>ATK</h3>
+                                <p style={styles.cardInfoDetails}>{props.atk}</p>
+                            </section>
 
-                <div style={styles.effect}>
-                    <h3 style={styles.cardInfoTitle}>Card Text</h3>
-                    <p style={styles.cardInfo}>{props.description}</p>
-                </div>
+                            <section style={styles.splitRow}>
+                                <h3 style={styles.cardInfoTitle}>DEF</h3>
+                                <p style={styles.cardInfoDetails}>{props.def}</p>
+                            </section>
+                        </section>
 
-
-                {/*<p style={styles.rarity} >{props.rarity}</p>*/}
-            </div>
+                        <section style={styles.effectTxt}>
+                            <h3 style={styles.cardInfoTitle}>Card Text</h3>
+                            <p style={styles.cardInfoDetails}>{props.description}</p>
+                        </section>
+                    </section>
+                </section>
             </section>
-
-        </div>
         </div>
     );
 }
 
 export default Card;
 
+// CSS Modules
 const styles = {
     container: {
         minHeight: '424px',
@@ -82,7 +78,7 @@ const styles = {
         backgroundColor: '#071D3B',
         color: '#F6C443',
     },
-    header: {
+    headerTxt: {
         textAlign: 'center',
         fontSize: '32px',
         fontWeight: '500',
@@ -122,7 +118,7 @@ const styles = {
         alignItems: 'center',
         marginBottom: '5px',
     },
-    effect: {
+    effectTxt: {
         backgroundColor: '#FFFFFF',
         borderRadius: '4px',
         minHeight: '42px',
@@ -135,7 +131,7 @@ const styles = {
         color: '#071D3B',
         fontSize: '23px',
     },
-    cardInfo: {
+    cardInfoDetails: {
         fontWeight: '300',
         color: '#4E574F',
         fontSize: '23px',
