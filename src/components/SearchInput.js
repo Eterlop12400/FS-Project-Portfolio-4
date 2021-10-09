@@ -92,7 +92,7 @@ function SearchInput() {
     return (
         <div style={styles.container}>
             <section style={styles.containerTwo}>
-                <p style={styles.inputLabel}>Enter a card name:</p>
+                <p style={styles.inputLabel}>Enter A Card Name:</p>
                 <input style={styles.input} onKeyPress={handleSubmit} className='cardInput' type='text' />
                 <button style={styles.btn} onClick={handleSubmit}><BsSearch style={styles.btnIcon} /></button>
                 <p className='errorMsg' style={styles.error} />
