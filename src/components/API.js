@@ -4,9 +4,14 @@ import cardBack from '../images/card-back.png';
 
 function API(props) {
 
-    const storageHistory = JSON.parse(localStorage.getItem('cardSearchHistory')) || [];
+    // Setting state based on existing data from localStorage or if not it will be an empty array.
+    const [searchHistory, setSearchHistory] = useState(JSON.parse(localStorage.getItem('cardSearchHistory')) || []);
+
+    // Setting state to true, this will determine which component set is loaded. Either from a specific search or a random card.
+    const [toggle, setToggle] = useState(true);
 
     // Setting up our state and leaving it empty when we load the page.
+    const [statusCall, setStatusCall] = useState(null);
     const [cardDetails, setCardDetails] = useState({
         data: [{
             name: 'Card Info',
@@ -20,6 +25,7 @@ function API(props) {
             race: 'N/A',
         }]});
 
+    // Setting up our state and leaving it empty when we load the page.
     const [randomCardDetails, setRandomCardDetails] = useState({
         name: 'Card Info',
         card_images: [{image_url: cardBack}],
@@ -32,28 +38,27 @@ function API(props) {
         race: 'N/A',
     });
 
-    const [toggle, setToggle] = useState(true);
-    const [statusCall, setStatusCall] = useState(null);
-    const [searchHistory, setSearchHistory] = useState(storageHistory);
-
     // Setting the url for our API call based on the props being passed in from Search.js.
     let urlForCardDetails = `https://db.ygoprodeck.com/api/v7/cardinfo.php?name=${props.url}`;
 
     // Using fetch, async, and await to get our API information. We are calling the function below.
     useEffect(() => {
+
+        // This function will run when the user puts in data for the input and hits enter or presses the search button.
         async function fetchAPI() {
             let responseForCardDetails;
             let cardInfo;
 
             // We will not call the API if the value is null like it is on the initial page load.
             if (props.url !== null) {
+                // We will use a try catch finally when making a call to the API.
                 try {
                     responseForCardDetails = await fetch(urlForCardDetails);
                     setStatusCall(true);
                 } catch (e) {
-                    setStatusCall(false);
+                    setStatusCall(false); // If there is an error we will set the state of statusCall to false.
                 } finally {
-
+                    // Only if it comes back without an error we will go ahead and fetch the API data and set it in our card details state.
                     if(statusCall === true) {
                         responseForCardDetails = await fetch(urlForCardDetails);
 
@@ -64,13 +69,15 @@ function API(props) {
 
                         setCardDetails(cardInfo);
 
-                        localStorage.clear();
-
                         // Saving info to our history
                         let searchHistoryList = searchHistory;
 
                         let cardExist = false;
 
+                        /*
+                        If the card exists in our search history we will remove it from the array and put it at the beginning.
+                        We will then update out local storage.
+                         */
                         for (let i = 0; i < searchHistoryList.length; i++) {
                             if (cardInfo.data[0].name === searchHistoryList[i].cardName) {
                                 cardExist = true;
@@ -80,25 +87,31 @@ function API(props) {
                             }
                         }
 
+                        // If the card does not exist in our search history we will then add it to our search history.
                         if (cardExist === false) {
                             searchHistoryList.unshift({cardName: cardInfo.data[0].name, cardImg: cardInfo.data[0].card_images[0].image_url});
                             setSearchHistory(searchHistoryList);
 
+                            /*
+                            As we don't want our search history to be too long we will only ensure we have a max of 6 items,
+                            so we will remove the last item in the array when a new one is added.
+                            */
                             if (searchHistoryList.length > 6) {
                                 searchHistoryList.pop();
                             }
 
+                            // We will then update out local storage.
                             window.localStorage.setItem('cardSearchHistory', JSON.stringify(searchHistory));
                         }
 
-                        // setting toggle to display searched card.
+                        // Setting toggle to display searched card.
                         setToggle(true);
                     }
                 }
             }
         }
         fetchAPI();
-    }, [urlForCardDetails, props.url, statusCall, searchHistory]);
+    }, [urlForCardDetails, props.url, statusCall, searchHistory]); // Stating our dependencies.
 
     return (
         <div>
@@ -107,6 +120,7 @@ function API(props) {
             </div>
 
             <div style={styles.container}>
+            {/*  If the toggle is set to true it will display API structure based on a search call.  */}
             {toggle && <Card
                 name={cardDetails.data[0].name}
                 image={cardDetails.data[0].card_images[0].image_url}
@@ -118,6 +132,8 @@ function API(props) {
                 attribute={cardDetails.data[0].attribute}
                 race={cardDetails.data[0].race}
             /> }
+
+            {/*  If the toggle is set to false it will display API structure based on the random call.  */}
             {!toggle && <Card
                 name={randomCardDetails.name}
                 image={randomCardDetails.card_images[0].image_url}
@@ -133,6 +149,7 @@ function API(props) {
         </div>
     );
 
+    // This function will run when clicking on the random card button.
     async function getRandomCard () {
             const url = `https://db.ygoprodeck.com/api/v7/randomcard.php`;
             let searchHistoryList = searchHistory;
@@ -148,6 +165,10 @@ function API(props) {
 
             let cardExist = false;
 
+            /*
+            If the card exists in our search history we will remove it from the array and put it at the beginning.
+            We will then update out local storage.
+            */
             for (let i = 0; i < searchHistoryList.length; i++) {
                 if (cardInfo.name === searchHistoryList[i].cardName) {
                     cardExist = true;
@@ -157,33 +178,32 @@ function API(props) {
                 }
             }
 
+            /*
+            As we don't want our search history to be too long we will only ensure we have a max of 6 items,
+            so we will remove the last item in the array when a new one is added.
+            */
             if (searchHistoryList.length > 6) {
                 searchHistoryList.pop();
             }
 
+            // If the card does not exist in our search history we will then add it to our search history.
             if (cardExist === false) {
                 searchHistoryList.unshift({cardName: cardInfo.name, cardImg: cardInfo.card_images[0].image_url});
                 setSearchHistory(searchHistoryList);
 
+                // We will then update out local storage.
                 window.localStorage.setItem('cardSearchHistory', JSON.stringify(searchHistory));
             }
 
+            // Setting toggle to display random card.
             setToggle(false);
         }
     }
 
 export default API;
 
+// CSS Modules
 const styles = {
-    btn: {
-        padding: '20px 75px',
-        backgroundColor: '#071D3B',
-        color: '#FFC300',
-        fontSize: '23px',
-        fontWeight: '500',
-        borderRadius: '4px',
-        fontFamily: 'casablanca-urw, sans-serif',
-    },
     container: {
         fontFamily: 'casablanca-urw, sans-serif',
         display: 'flex',
@@ -193,5 +213,14 @@ const styles = {
         display: 'flex',
         width: '100%',
         justifyContent: 'center',
+    },
+    btn: {
+        padding: '20px 75px',
+        backgroundColor: '#071D3B',
+        color: '#FFC300',
+        fontSize: '23px',
+        fontWeight: '500',
+        borderRadius: '4px',
+        fontFamily: 'casablanca-urw, sans-serif',
     }
 }
