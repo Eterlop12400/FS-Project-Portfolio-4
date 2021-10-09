@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 // React Components
 import Home from '../pages/Home'
 import Search from '../pages/Search'
-import Search_History from "../pages/Search_History";
+import SearchHistory from "../pages/SearchHistory";
 
 const Routes = () => {
     return (
@@ -14,7 +14,7 @@ const Routes = () => {
             <Route exact path='/' component={Home} />
             <Route exact path='/Home' component={Home} />
             <Route exact path='/Search' component={Search} />
-            <Route exact path='/SearchHistory' component={Search_History} />
+            <Route exact path='/SearchHistory' component={SearchHistory} />
         </Switch>
     );
 }
