@@ -26,6 +26,7 @@ function SearchInput() {
             } catch (e) {
                 setStatusCall(false); // If there is an error we will set the state of statusCall to false.
 
+                // If we get an error we will display the error on the page.
                 document.querySelector('.errorMsg').innerText = "Card searching is currently unavailable, try again later!";
             } finally {
 
@@ -44,67 +45,45 @@ function SearchInput() {
     }, [statusCall]);
 
     // This function will take the value of the input and set it to the state if not left blank.
-    function handleSubmitByEnter (e) {
+    function handleSubmit (e) {
         let cardExists = false;
         let inputElm = document.querySelector('.cardInput');
         let errorMsg = document.querySelector('.errorMsg');
         let inputValue = inputElm.value.toLowerCase();
 
         if (statusCall === false) {
+
+            // If we get an error we will display the error on the page.
             errorMsg.innerText = "Card searching is currently unavailable, try again later!";
         } else {
-            if (e.key === 'Enter') {
+            if (e.key === 'Enter' || e.type === 'click') {
                 if (inputValue === '') {
+                    // If the user tries to enter blank data we will display the error on the page.
                     errorMsg.innerText = "Please don't leave the input blank, try again!";
                 } else {
+
+                    /*
+                    We will loop through our list of cards to see if the value matches a card in the list.
+                    If a card exists we will set cardExists to true.
+                     */
                     for(let i = 0; i < cardList.length; i++) {
                         if(inputValue === cardList[i]) {
                             cardExists = true;
                         }
                     }
 
+                    // If we found that the card does exist we will run this.
                     if (cardExists === true) {
                         if (inputValue !== '') {
                             setCardName(inputValue);
-                            inputElm.value = '';
-                            errorMsg.innerText = '';
+                            inputElm.value = ''; // Clearing the text input.
+                            errorMsg.innerText = ''; // Clearing the error message.
                         }
                     } else {
+                        // If we found the card does not exist this will run and will display and error to the user.
                         errorMsg.innerText = "That card couldn't found, please try again!";
-                        inputElm.value = '';
+                        inputElm.value = ''; // Clearing the text input.
                     }
-                }
-            }
-        }
-    }
-
-    function handleSubmitByClick (e) {
-        let cardExists = false;
-        let inputElm = document.querySelector('.cardInput');
-        let errorMsg = document.querySelector('.errorMsg');
-        let inputValue = inputElm.value.toLowerCase();
-
-
-        if (statusCall === false) {
-            errorMsg.innerText = "Card searching is currently unavailable, try again later!";
-        } else {
-            if (inputValue === '') {
-                errorMsg.innerText = "Please don't leave the input blank, try again!";
-            } else {
-                for(let i = 0; i < cardList.length; i++) {
-                    if(inputValue === cardList[i]) {
-                        cardExists = true;
-                    }
-                }
-                if (cardExists === true) {
-                    if (inputValue !== '') {
-                        setCardName(inputValue);
-                        inputElm.value = '';
-                        errorMsg.innerText = '';
-                    }
-                } else {
-                    errorMsg.innerText = "That card couldn't found, please try again!";
-                    inputElm.value = '';
                 }
             }
         }
@@ -113,16 +92,17 @@ function SearchInput() {
     return (
         <div style={styles.container}>
             <section style={styles.containerTwo}>
-            <p style={styles.inputLabel}>Enter a card name:</p>
-            <input style={styles.input} onKeyPress={handleSubmitByEnter} className='cardInput' type='text' />
-            <button style={styles.btn} onClick={handleSubmitByClick}><BsSearch style={styles.btnIcon} /></button>
-            <p className='errorMsg' style={styles.error}/>
-            <p style={styles.subText}>OR</p>
-            <Api url={cardName} />
+                <p style={styles.inputLabel}>Enter a card name:</p>
+                <input style={styles.input} onKeyPress={handleSubmit} className='cardInput' type='text' />
+                <button style={styles.btn} onClick={handleSubmit}><BsSearch style={styles.btnIcon} /></button>
+                <p className='errorMsg' style={styles.error} />
+                <p style={styles.subText}>OR</p>
+                <Api url={cardName} />
             </section>
         </div>
     );
 
+    // This function will set our card list state with a current list of all available cards in the game.
     function createCardList (apiCardInfo) {
         let cardLists = [];
 
