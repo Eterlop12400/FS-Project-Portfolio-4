@@ -1,19 +1,24 @@
 import React from 'react';
 
+// Import Component
 import Nav from './Nav';
 
 function Header(props) {
     return (
-        <div style={styles.typography}>
+        <header style={styles.container}>
             <h1 style={styles.header}>{props.header}</h1>
             <Nav />
-        </div>
+        </header>
     );
 }
 
 export default Header;
 
+// CSS Module
 const styles = {
+    container: {
+        fontFamily: 'casablanca-urw, sans-serif',
+    },
     header: {
         backgroundColor: '#001D3D',
         color: '#FFC300',
@@ -24,8 +29,5 @@ const styles = {
         margin: '0',
         fontWeight: '700',
         fontSize: '42px',
-    },
-    typography: {
-        fontFamily: 'casablanca-urw, sans-serif',
     }
 }
