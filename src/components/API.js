@@ -101,7 +101,9 @@ function API(props) {
                             so we will remove the last item in the array when a new one is added.
                             */
                             if (searchHistoryList.length > 6) {
-                                searchHistoryList.pop();
+                                while (searchHistoryList.length > 6) {
+                                    searchHistoryList.pop();
+                                }
                             }
 
                             // We will then update out local storage.
@@ -188,8 +190,10 @@ function API(props) {
             As we don't want our search history to be too long we will only ensure we have a max of 6 items,
             so we will remove the last item in the array when a new one is added.
             */
-            if (searchHistoryList.length > 6) {
-                searchHistoryList.pop();
+            if (searchHistoryList.length > 5) {
+                while (searchHistoryList.length > 5) {
+                    searchHistoryList.pop();
+                }
             }
 
             // If the card does not exist in our search history we will then add it to our search history.
