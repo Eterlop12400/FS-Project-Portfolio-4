@@ -6,19 +6,20 @@ function FeaturedCard(props) {
     return (
         <div style={styles.containerMain}>
             <h2 style={styles.containerMainHeader}>Featured Card</h2>
-            <div style={styles.container}>
+            <section style={styles.container}>
                 <div style={styles.header}>
                     <h3 style={styles.cardHeader}>{props.cardName}</h3>
                 </div>
 
                 <img style={styles.card} src={props.img} alt={props.imgAlt}/>
-            </div>
+            </section>
         </div>
     );
 }
 
 export default FeaturedCard;
 
+// CSS Modules
 const styles = {
     card: {
         height: '321px',
