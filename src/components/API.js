@@ -1,5 +1,9 @@
 import React, {useEffect, useState} from 'react';
+
+// React Component
 import Card from './Card';
+
+// Import Image
 import cardBack from '../images/card-back.png';
 
 function API(props) {
