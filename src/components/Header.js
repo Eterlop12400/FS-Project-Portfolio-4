@@ -4,7 +4,7 @@ import Nav from './Nav';
 
 function Header(props) {
     return (
-        <div>
+        <div style={styles.typography}>
             <h1 style={styles.header}>{props.header}</h1>
             <Nav />
         </div>
@@ -22,5 +22,10 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         margin: '0',
+        fontWeight: '700',
+        fontSize: '42px',
+    },
+    typography: {
+        fontFamily: 'casablanca-urw, sans-serif',
     }
 }

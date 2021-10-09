@@ -19,5 +19,8 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
         margin: '0',
+        fontWeight: '300',
+        fontSize: '23px',
+        fontFamily: 'casablanca-urw, sans-serif',
     }
 }

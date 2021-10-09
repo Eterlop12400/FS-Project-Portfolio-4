@@ -6,9 +6,9 @@ function Search() {
 
     return (
         <main style={styles.container}>
-            <h2 style={styles.body}>This is the Search page!</h2>
-
-            <Searchs style={styles.search} />
+            <div style={styles.search}>
+                <Searchs />
+            </div>
         </main>
     );
 }
@@ -17,17 +17,20 @@ export default Search;
 
 const styles = {
     container: {
-        width: '50%',
+        width: '75%',
         backgroundColor: '#FDF5D9',
         margin: '0px auto',
-        height: '800px',
+        minHeight: '800px',
+        height: 'auto',
+        paddingBottom: '10px',
     },
     body: {
         textAlign: 'center',
         marginTop: '0',
     },
     search: {
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        display: 'flex',
+        justifyItems: 'center',
+        width: '100%',
     }
 }

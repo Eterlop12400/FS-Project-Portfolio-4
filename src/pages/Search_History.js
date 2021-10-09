@@ -15,7 +15,7 @@ export default SearchHistory;
 
 const styles = {
     container: {
-        width: '50%',
+        width: '75%',
         backgroundColor: '#FDF5D9',
         margin: '0px auto',
         height: '800px',
