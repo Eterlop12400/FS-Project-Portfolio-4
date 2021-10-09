@@ -1,5 +1,4 @@
 import React from 'react';
-
 import  { NavLink } from 'react-router-dom';
 
 function Nav() {
@@ -22,7 +21,7 @@ function Nav() {
 
 export default Nav;
 
-// Css Modules
+// CSS Modules
 const styles = {
     container: {
         backgroundColor: '#001D3D',

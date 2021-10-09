@@ -104,14 +104,14 @@ function Search() {
 
     return (
         <div style={styles.container}>
-            <div style={styles.containerTwo}>
+            <section style={styles.containerTwo}>
             <p style={styles.inputLabel}>Enter a card name:</p>
             <input style={styles.input} onKeyPress={handleSubmitByEnter} className='cardInput' type='text' />
             <button style={styles.btn} onClick={handleSubmitByClick}><BsSearch style={styles.btnIcon} /></button>
-            <p className='errorMsg' style={styles.error}></p>
+            <p className='errorMsg' style={styles.error}/>
             <p style={styles.subText}>OR</p>
             <Api url={cardName} />
-            </div>
+            </section>
         </div>
     );
 
@@ -127,6 +127,7 @@ function Search() {
 
 export default Search;
 
+// CSS Modules
 const styles = {
     inputLabel: {
         marginTop: '0',
