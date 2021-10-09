@@ -1,8 +1,14 @@
 import React, {useEffect, useState} from 'react';
+
+// Importing Component
 import Api from "./API";
+
+// Importing Icon
 import { BsSearch } from "react-icons/bs";
 
-function Search() {
+function SearchInput() {
+
+    // Setting our states for cardName, cardList, and statusCall.
     const [cardName, setCardName] = useState(null);
     const [cardList, setCardList] = useState([]);
     const [statusCall, setStatusCall] = useState(null);
@@ -13,22 +19,24 @@ function Search() {
             const url = `https://db.ygoprodeck.com/api/v7/cardinfo.php`;
             let responseForCardDetails;
 
+            // We will use a try catch finally when making a call to the API.
             try {
                 responseForCardDetails = await fetch(url);
                 setStatusCall(true);
             } catch (e) {
-                setStatusCall(false);
+                setStatusCall(false); // If there is an error we will set the state of statusCall to false.
 
                 document.querySelector('.errorMsg').innerText = "Card searching is currently unavailable, try again later!";
             } finally {
 
+                // Only if it comes back without an error we will go ahead and fetch the API data and set it in our card list state.
                 if (statusCall === true) {
                     const cardJsonData = await responseForCardDetails.json();
                     let cardInfo = [];
 
                     cardInfo = cardJsonData;
 
-                    createCardList(cardInfo);
+                    createCardList(cardInfo); // This method will be used to set our list of cards.
                 }
             }
         }
@@ -115,17 +123,17 @@ function Search() {
         </div>
     );
 
-    function createCardList (info) {
+    function createCardList (apiCardInfo) {
         let cardLists = [];
 
-        for(let i = 0; i < info.data.length; i++) {
-            cardLists.push(info.data[i].name.toLowerCase());
+        for(let i = 0; i < apiCardInfo.data.length; i++) {
+            cardLists.push(apiCardInfo.data[i].name.toLowerCase());
         }
         setCardList(cardLists);
     }
 }
 
-export default Search;
+export default SearchInput;
 
 // CSS Modules
 const styles = {
