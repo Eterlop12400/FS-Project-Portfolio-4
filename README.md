@@ -1,4 +1,4 @@
-# Programming for Web Applications
+# Project & Portfolio IV
 ### Eric Terlop / ID # :0004908901  
 Hello, my name is Eric Terlop and I have a strong passion for making ideas come to life. I am eager to learn new and better ways to code!
 
@@ -16,3 +16,7 @@ ___
 
 ## Week 1: Proof of Concept
 This week the focus was on making sure the API chosen will work. I added a text input where a user can enter a name and based on that information it will display data from the API. The framework I am using is React.js.
+___
+
+## Week 2: Checkpoint One
+This week the focus was on ensuring the core functionality was implemented and working, design work was beginning to be implemented, and users should be able to accomplish the primary goal of the application.
