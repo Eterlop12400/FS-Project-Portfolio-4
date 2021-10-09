@@ -1,13 +1,13 @@
 import React from "react";
 
-import Searchs from "../components/Search";
+import SearchInput from "../components/SearchInput";
 
 function Search() {
 
     return (
         <main style={styles.container}>
             <div style={styles.search}>
-                <Searchs />
+                <SearchInput />
             </div>
         </main>
     );
