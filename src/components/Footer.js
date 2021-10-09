@@ -2,14 +2,15 @@ import React from 'react';
 
 function Footer(props) {
     return (
-        <div>
+        <footer>
             <p style={styles.footer}>{props.footer}</p>
-        </div>
+        </footer>
     );
 }
 
 export default Footer;
 
+// CSS Modules
 const styles = {
     footer: {
         backgroundColor: 'black',
