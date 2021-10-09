@@ -10,7 +10,7 @@ function Card(props) {
 
             <section style={styles.section}>
             <div style={styles.sectionColumnOne}>
-                <img style={styles.cardImg} src={props.image} alt={props.imageAlt}/>
+                <img style={styles.cardImg} src={props.image} alt={props.imgAlt}/>
             </div>
 
             <div style={styles.sectionColumnTwo}>
