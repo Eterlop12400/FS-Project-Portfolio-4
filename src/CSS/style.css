@@ -28,18 +28,43 @@
     font-family: casablanca-urw, sans-serif;
 }
 
+.search-history--main-container {
+    width: 75%;
+    background-color: #FDF5D9;
+    margin: 0 auto;
+    min-height: 800px;
+    height: auto;
+    font-family: casablanca-urw, sans-serif;
+}
+
+.card-history--main-container {
+    width: 396px;
+    background-color: #C7DFFC;
+    height: 180px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    justify-content: center;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    font-family: casablanca-urw, sans-serif;
+}
+
 @media (max-width: 1050px) {
+
+    .featured-card--main-container,
+    .search-history--main-container,
+    .home--main-section,
     .home--main-container {
         width: 100%;
+    }
+
+    .home--main-container {
         flex-direction: column;
     }
 
-    .home--main-section {
-        width: 100%;
-    }
-
-    .featured-card--main-container {
-        width: 100%;
+    .card-history--main-container {
+        width: 90%;
     }
 }
 
