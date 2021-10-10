@@ -1,7 +1,9 @@
+
+/* Styling for home page. */
 .home--main-container {
     width: 75%;
     background-color: #FDF5D9;
-    margin: 0px auto;
+    margin: 0 auto;
     height: auto;
     display: flex;
     flex-direction: row-reverse;
@@ -28,6 +30,7 @@
     font-family: casablanca-urw, sans-serif;
 }
 
+/* Styling for search history page. */
 .search-history--main-container {
     width: 75%;
     background-color: #FDF5D9;
@@ -37,6 +40,7 @@
     font-family: casablanca-urw, sans-serif;
 }
 
+/* Styling for card history component.  */
 .card-history--main-container {
     width: 396px;
     background-color: #C7DFFC;
@@ -50,21 +54,142 @@
     font-family: casablanca-urw, sans-serif;
 }
 
+.search--main-container {
+    width: 75%;
+    background-color: #FDF5D9;
+    margin: 0 auto;
+    min-height: 800px;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+/* Styling for search input component.  */
+.search-input--main-container,
+.search-input--main-section {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-input--main-container {
+    width: 75%;
+}
+
+.search-input--main-section {
+    width: 55%;
+}
+
+.search-input--main-input-container {
+    margin-left: auto;
+    width: 90%;
+}
+
+/* Styling for card component. */
+.card--main-section-card-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.card--main-section-card-container {
+    min-height: 424px;
+    width: 705px;
+    border-radius: 4px;
+    background-color: #BFC7C0;
+    font-family: casablanca-urw, sans-serif;
+    height: auto;
+}
+
+.card--main-section-card-header {
+    height: 69px;
+    width: 705px;
+    border-radius: 4px 4px 0 0;
+    background-color: #071D3B;
+    color: #F6C443;
+}
+
+.card--main-section-card-column-img {
+    width: 40%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.half-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.full-row--section,
+.half-row--section {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 42px;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.half-row--section {
+    width: 44%;
+}
+
+.full-row--section-effect {
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    min-height: 42px;
+    height: auto;
+    padding: 1px 8px;
+    margin-bottom: 10px;
+}
+
+.card--main-section-card-column-details {
+    width: 50%;
+    margin-top: 10px;
+}
+
+/* Styling to make the webpage responsive based on screen width. */
 @media (max-width: 1050px) {
 
     .featured-card--main-container,
     .search-history--main-container,
     .home--main-section,
-    .home--main-container {
+    .home--main-container,
+    .search--main-container,
+    .search-input--main-section,
+    .card--main-section-card-container,
+    .card--main-section-card-header,
+    .card--main-section-card-column-img {
         width: 100%;
     }
 
-    .home--main-container {
+    .home--main-container,
+    .half-row {
         flex-direction: column;
     }
 
     .card-history--main-container {
         width: 90%;
+    }
+
+    .card--main-section-card-info {
+        flex-direction: column;
+    }
+
+    .half-row--section,
+    .full-row--section,
+    .full-row--section-effect,
+    .card--main-section-card-column-details {
+        width: 95%;
+    }
+
+    .card--main-section-card-column-details {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
