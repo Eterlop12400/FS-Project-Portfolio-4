@@ -4,7 +4,7 @@ import React from 'react';
 function FeaturedCard(props) {
 
     return (
-        <div style={styles.containerMain}>
+        <div className='featured-card--main-container'>
             <h2 style={styles.containerMainHeader}>Featured Card</h2>
             <section style={styles.container}>
                 <div style={styles.header}>
@@ -52,13 +52,6 @@ const styles = {
         marginTop: '40px',
         fontSize: '18px',
         fontWeight: '500',
-    },
-    containerMain: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: '50%',
-        fontFamily: 'casablanca-urw, sans-serif',
     },
     containerMainHeader: {
         fontWeight: '500',
