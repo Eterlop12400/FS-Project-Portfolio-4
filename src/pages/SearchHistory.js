@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 
+// Importing Component
 import CardHistory from "../components/CardHistory";
 
 function SearchHistory() {

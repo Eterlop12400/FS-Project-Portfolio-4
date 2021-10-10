@@ -1,5 +1,6 @@
 import React from "react";
 
+// Importing Component
 import SearchInput from "../components/SearchInput";
 
 function Search() {
