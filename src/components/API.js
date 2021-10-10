@@ -161,6 +161,9 @@ function API(props) {
     async function getRandomCard () {
             const url = `https://db.ygoprodeck.com/api/v7/randomcard.php`;
             let searchHistoryList = searchHistory;
+            let errorMsg = document.querySelector('.errorMsg');
+
+            errorMsg.innerText = ''; // Clearing the error message.
 
             const responseForCardDetails = await fetch(url);
 
