@@ -1,7 +1,14 @@
 import React, {useEffect, useState} from "react";
-import FeaturedCard from "../components/FeaturedCard";
-import desktopBanner from '../images/desktop-banner.png';
-import cardBack from '../images/card-back.png';
+
+// Importing Component
+import FeaturedCard from "../../components/FeaturedCard";
+
+//Importing Images
+import desktopBanner from '../../images/desktop-banner.png';
+import cardBack from '../../images/card-back.png';
+
+// Importing Stylesheet
+import './Home.css';
 
 function Home() {
 
@@ -39,10 +46,10 @@ function Home() {
     }, [statusCall]);
 
     return (
-        <main style={styles.container}>
+        <main className='mains'>
 
-            <section style={styles.section}>
-                <article style={styles.article}>
+            <section className='sections'>
+                <article className='articles'>
                     <h2 style={styles.articleTitle}>Welcome to Yu-Gi-Oh Card Vault</h2>
                     <img style={styles.img} src={desktopBanner} alt='desktop banner'/>
                     <h3 style={styles.articleSubTitle}>About us</h3>
@@ -63,25 +70,9 @@ function Home() {
 export default Home;
 
 const styles = {
-    container: {
-        width: '75%',
-        backgroundColor: '#FDF5D9',
-        margin: '0px auto',
-        height: 'auto',
-        display: 'flex',
-        flexDirection: 'row-reverse',
-        paddingTop: '50px',
-        paddingBottom: '100px',
-    },
     body: {
         textAlign: 'center',
         marginTop: '0',
-    },
-    article: {
-        width: '396px',
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        fontFamily: 'casablanca-urw, sans-serif',
     },
     articleTitle: {
         fontWeight: '500',
@@ -93,9 +84,6 @@ const styles = {
         fontSize: '26px',
         marginBottom: '-18px',
         color: '#071D3B',
-    },
-    section: {
-        width: '50%',
     },
     p: {
         lineHeight: '2',

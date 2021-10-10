@@ -1,0 +1,46 @@
+.home--main-container {
+    width: 75%;
+    background-color: #FDF5D9;
+    margin: 0px auto;
+    height: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    font-family: casablanca-urw, sans-serif;
+}
+
+.home--main-article {
+    width: 396px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home--main-section {
+    width: 50%;
+}
+
+.featured-card--main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    font-family: casablanca-urw, sans-serif;
+}
+
+@media (max-width: 1050px) {
+    .home--main-container {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .home--main-section {
+        width: 100%;
+    }
+
+    .featured-card--main-container {
+        width: 100%;
+    }
+}
+
+
