@@ -3,7 +3,7 @@ import React from "react";
 function CardHistory(props) {
 
     return (
-        <div style={styles.container}>
+        <div className='card-history--main-container'>
             <div src={props.imgContainer}>
                 <img src={props.img} alt={props.imgAlt} style={styles.img} />
             </div>
@@ -19,18 +19,6 @@ export default CardHistory;
 
 // CSS Modules
 const styles = {
-    container: {
-        width: '396px',
-        backgroundColor: '#C7DFFC',
-        height: '180px',
-        borderRadius: '4px',
-        display: 'flex',
-        alignItems: 'center',
-        marginBottom: '30px',
-        justifyContent: 'center',
-        boxShadow: '0px 3px 15px rgba(0,0,0,0.1)',
-        fontFamily: 'casablanca-urw, sans-serif',
-    },
     imgContainer: {
         width: '50%',
     },
