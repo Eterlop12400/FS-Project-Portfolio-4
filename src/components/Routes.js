@@ -3,7 +3,7 @@ import React from "react";
 // React Router
 import { Route, Switch, Redirect } from 'react-router-dom';
 
-// React Components
+// Importing Components
 import Home from '../pages/Home'
 import Search from '../pages/Search'
 import SearchHistory from "../pages/SearchHistory";
