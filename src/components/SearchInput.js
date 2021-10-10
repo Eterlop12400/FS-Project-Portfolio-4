@@ -90,12 +90,17 @@ function SearchInput() {
     }
 
     return (
-        <div style={styles.container}>
-            <section style={styles.containerTwo}>
-                <p style={styles.inputLabel}>Enter A Card Name:</p>
-                <input style={styles.input} onKeyPress={handleSubmit} className='cardInput' type='text' />
-                <button style={styles.btn} onClick={handleSubmit}><BsSearch style={styles.btnIcon} /></button>
-                <p className='errorMsg' style={styles.error} />
+        <div className='search-input--main-container'>
+            <section className='search-input--main-section'>
+                <div className='search-input--main-input-container'>
+                    <div>
+                        <p style={styles.inputLabel}>Enter A Card Name:</p>
+                        <input style={styles.input} onKeyPress={handleSubmit} className='cardInput' type='text' />
+                        <button style={styles.btn} onClick={handleSubmit}><BsSearch style={styles.btnIcon} /></button>
+                    </div>
+                    <p className='errorMsg' style={styles.error} />
+                </div>
+
                 <p style={styles.subText}>OR</p>
                 <Api url={cardName} />
             </section>
@@ -128,7 +133,7 @@ const styles = {
     },
     input: {
         height: '42px',
-        width: '396px',
+        width: '75%',
         paddingLeft: '5px',
         paddingRight: '5px',
         color: '#4E574F',
@@ -149,16 +154,6 @@ const styles = {
         color: '#FFC300',
         height: '31px',
         width: '31px',
-    },
-    container: {
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        width: '75%',
-    },
-    containerTwo: {
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        width: '50%',
     },
     subText: {
         fontFamily: 'casablanca-urw, sans-serif',
