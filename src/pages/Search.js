@@ -5,7 +5,7 @@ import SearchInput from "../components/SearchInput";
 function Search() {
 
     return (
-        <main style={styles.container}>
+        <main className='search--main-container'>
             <div style={styles.search}>
                 <SearchInput />
             </div>
@@ -16,14 +16,6 @@ function Search() {
 export default Search;
 
 const styles = {
-    container: {
-        width: '75%',
-        backgroundColor: '#FDF5D9',
-        margin: '0px auto',
-        minHeight: '800px',
-        height: 'auto',
-        paddingBottom: '10px',
-    },
     body: {
         textAlign: 'center',
         marginTop: '0',
