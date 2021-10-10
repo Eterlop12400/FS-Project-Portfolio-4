@@ -12,7 +12,7 @@ function SearchHistory() {
     })
 
     return (
-        <main style={styles.container}>
+        <main className='search-history--main-container'>
             <header style={styles.headerContainer}>
                 <h2 style={styles.headerTxt}>Search History</h2>
             </header>
@@ -34,14 +34,6 @@ export default SearchHistory;
 
 // CSS Modules
 const styles = {
-    container: {
-        width: '75%',
-        backgroundColor: '#FDF5D9',
-        margin: '0px auto',
-        minHeight: '800px',
-        height: 'auto',
-        fontFamily: 'casablanca-urw, sans-serif',
-    },
     headerTxt: {
         textAlign: 'center',
         marginTop: '0',
