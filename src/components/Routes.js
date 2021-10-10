@@ -1,7 +1,7 @@
 import React from "react";
 
 // React Router
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 // React Components
 import Home from '../pages/Home'
@@ -11,7 +11,7 @@ import SearchHistory from "../pages/SearchHistory";
 const Routes = () => {
     return (
         <Switch>
-            <Route exact path='/' component={Home} />
+            <Route exact path='/' component={Home}> {<Redirect to="/Home" />} </Route>
             <Route exact path='/Home' component={Home} />
             <Route exact path='/Search' component={Search} />
             <Route exact path='/SearchHistory' component={SearchHistory} />
