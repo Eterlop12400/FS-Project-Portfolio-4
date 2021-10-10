@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from "react";
 
 // Importing Component
-import FeaturedCard from "../../components/FeaturedCard";
+import FeaturedCard from "../components/FeaturedCard";
 
 //Importing Images
-import desktopBanner from '../../images/desktop-banner.png';
-import cardBack from '../../images/card-back.png';
+import desktopBanner from '../images/desktop-banner.png';
+import cardBack from '../images/card-back.png';
 
 // Importing Stylesheet
-import './Home.css';
+import '../CSS/style.css';
 
 function Home() {
 
@@ -46,10 +46,9 @@ function Home() {
     }, [statusCall]);
 
     return (
-        <main className='mains'>
-
-            <section className='sections'>
-                <article className='articles'>
+        <main className='home--main-container'>
+            <section className='home--main-section'>
+                <article className='home--main-article'>
                     <h2 style={styles.articleTitle}>Welcome to Yu-Gi-Oh Card Vault</h2>
                     <img style={styles.img} src={desktopBanner} alt='desktop banner'/>
                     <h3 style={styles.articleSubTitle}>About us</h3>
@@ -61,8 +60,7 @@ function Home() {
                 </article>
             </section>
 
-            <FeaturedCard style={styles.section} cardName={featuredCardDetails.name} img={featuredCardDetails.card_images[0].image_url} imgAlt={featuredCardDetails.name} />
-
+            <FeaturedCard cardName={featuredCardDetails.name} img={featuredCardDetails.card_images[0].image_url} imgAlt={featuredCardDetails.name} />
         </main>
     );
 }
