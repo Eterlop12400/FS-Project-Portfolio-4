@@ -11,7 +11,7 @@ import SearchHistory from "../pages/SearchHistory";
 const Routes = () => {
     return (
         <Switch>
-            <Route exact path='/' component={Home}> {<Redirect to="/Home" />} </Route>
+            <Route exact path='/' component={Home}>{<Redirect to="/Home" />}</Route>
             <Route exact path='/Home' component={Home} />
             <Route exact path='/Search' component={Search} />
             <Route exact path='/SearchHistory' component={SearchHistory} />
