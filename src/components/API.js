@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-// React Component
+// Importing Component
 import Card from './Card';
 
 // Import Image
