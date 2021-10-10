@@ -4,7 +4,7 @@ import React, {useEffect, useState} from "react";
 import FeaturedCard from "../components/FeaturedCard";
 
 //Importing Images
-import desktopBanner from '../images/desktop-banner.png';
+import homeBanner from '../images/home-banner.png';
 import cardBack from '../images/card-back.png';
 
 // Importing Stylesheet
@@ -50,7 +50,7 @@ function Home() {
             <section className='home--main-section'>
                 <article className='home--main-article'>
                     <h2 style={styles.articleTitle}>Welcome to Yu-Gi-Oh Card Vault</h2>
-                    <img style={styles.img} src={desktopBanner} alt='desktop banner'/>
+                    <img style={styles.img} src={homeBanner} alt='desktop banner'/>
                     <h3 style={styles.articleSubTitle}>About us</h3>
                     <p style={styles.p}>
                         Yu-Gi-Oh Card Vault is a website focused on the Yu-Gi-Oh Trading Card game where users can search
