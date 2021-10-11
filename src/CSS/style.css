@@ -1,3 +1,7 @@
+/* Styling for buttons on hover. */
+button:hover {
+    cursor: pointer;
+}
 
 /* Styling for home page. */
 .home--main-container {
