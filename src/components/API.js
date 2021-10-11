@@ -15,7 +15,6 @@ function API(props) {
     const [toggle, setToggle] = useState(true);
 
     // Setting up our state and leaving it empty when we load the page.
-    const [statusCall, setStatusCall] = useState(null);
     const [cardDetails, setCardDetails] = useState({
         data: [{
             name: 'Card Info',
@@ -50,20 +49,24 @@ function API(props) {
 
         // This function will run when the user puts in data for the input and hits enter or presses the search button.
         async function fetchAPI() {
+            let errorMsg = document.querySelector('.errorMsg');
             let responseForCardDetails;
             let cardInfo;
+            let apiCallResponse;
 
             // We will not call the API if the value is null like it is on the initial page load.
             if (props.url !== null) {
                 // We will use a try catch finally when making a call to the API.
                 try {
                     responseForCardDetails = await fetch(urlForCardDetails);
-                    setStatusCall(true);
+                    apiCallResponse = true;
                 } catch (e) {
-                    setStatusCall(false); // If there is an error we will set the state of statusCall to false.
+                    errorMsg.innerText = 'There is currently an issue with the API, try again later.';
+                    apiCallResponse = false; // If there is an error we will set the state of statusCall to false.
                 } finally {
                     // Only if it comes back without an error we will go ahead and fetch the API data and set it in our card details state.
-                    if(statusCall === true) {
+                    if(apiCallResponse === true) {
+
                         responseForCardDetails = await fetch(urlForCardDetails);
 
                         const cardJsonData = await responseForCardDetails.json();
@@ -117,7 +120,7 @@ function API(props) {
             }
         }
         fetchAPI();
-    }, [urlForCardDetails, props.url, statusCall, searchHistory]); // Stating our dependencies.
+    }, [urlForCardDetails, props.url, searchHistory]); // Stating our dependencies.
 
     return (
         <div>
@@ -159,57 +162,71 @@ function API(props) {
 
     // This function will run when clicking on the random card button.
     async function getRandomCard () {
+            let responseForCardDetails;
             const url = `https://db.ygoprodeck.com/api/v7/randomcard.php`;
             let searchHistoryList = searchHistory;
             let errorMsg = document.querySelector('.errorMsg');
+            let apiCallResponse;
 
             errorMsg.innerText = ''; // Clearing the error message.
 
-            const responseForCardDetails = await fetch(url);
+            try {
+                responseForCardDetails = await fetch(url);
+                apiCallResponse = true;
+            } catch (e) {
+                apiCallResponse = false
+                errorMsg.innerText = 'There is currently an issue with the API, please try again later.';
+            } finally {
 
-            const cardJsonData = await responseForCardDetails.json();
-            let cardInfo = [];
+                // Only if it comes back without an error we will go ahead and fetch the API data and set it in our card details state.
+                if(apiCallResponse === true) {
+                    responseForCardDetails = await fetch(url);
 
-            cardInfo = cardJsonData;
+                    const cardJsonData = await responseForCardDetails.json();
+                    let cardInfo = [];
 
-            setRandomCardDetails(cardInfo);
+                    cardInfo = cardJsonData;
 
-            let cardExist = false;
+                    setRandomCardDetails(cardInfo);
 
-            /*
-            If the card exists in our search history we will remove it from the array and put it at the beginning.
-            We will then update out local storage.
-            */
-            for (let i = 0; i < searchHistoryList.length; i++) {
-                if (cardInfo.name === searchHistoryList[i].cardName) {
-                    cardExist = true;
-                    searchHistoryList.splice(i, 1);
-                    searchHistoryList.unshift({cardName: cardInfo.name, cardImg: cardInfo.card_images[0].image_url});
-                    window.localStorage.setItem('cardSearchHistory', JSON.stringify(searchHistory));
+                    let cardExist = false;
+
+                    /*
+                    If the card exists in our search history we will remove it from the array and put it at the beginning.
+                    We will then update out local storage.
+                    */
+                    for (let i = 0; i < searchHistoryList.length; i++) {
+                        if (cardInfo.name === searchHistoryList[i].cardName) {
+                            cardExist = true;
+                            searchHistoryList.splice(i, 1);
+                            searchHistoryList.unshift({cardName: cardInfo.name, cardImg: cardInfo.card_images[0].image_url});
+                            window.localStorage.setItem('cardSearchHistory', JSON.stringify(searchHistory));
+                        }
+                    }
+
+                    /*
+                    As we don't want our search history to be too long we will only ensure we have a max of 6 items,
+                    so we will remove the last item in the array when a new one is added.
+                    */
+                    if (searchHistoryList.length > 5) {
+                        while (searchHistoryList.length > 5) {
+                            searchHistoryList.pop();
+                        }
+                    }
+
+                    // If the card does not exist in our search history we will then add it to our search history.
+                    if (cardExist === false) {
+                        searchHistoryList.unshift({cardName: cardInfo.name, cardImg: cardInfo.card_images[0].image_url});
+                        setSearchHistory(searchHistoryList);
+
+                        // We will then update out local storage.
+                        window.localStorage.setItem('cardSearchHistory', JSON.stringify(searchHistory));
+                    }
+
+                    // Setting toggle to display random card.
+                    setToggle(false);
                 }
             }
-
-            /*
-            As we don't want our search history to be too long we will only ensure we have a max of 6 items,
-            so we will remove the last item in the array when a new one is added.
-            */
-            if (searchHistoryList.length > 5) {
-                while (searchHistoryList.length > 5) {
-                    searchHistoryList.pop();
-                }
-            }
-
-            // If the card does not exist in our search history we will then add it to our search history.
-            if (cardExist === false) {
-                searchHistoryList.unshift({cardName: cardInfo.name, cardImg: cardInfo.card_images[0].image_url});
-                setSearchHistory(searchHistoryList);
-
-                // We will then update out local storage.
-                window.localStorage.setItem('cardSearchHistory', JSON.stringify(searchHistory));
-            }
-
-            // Setting toggle to display random card.
-            setToggle(false);
         }
     }
 
