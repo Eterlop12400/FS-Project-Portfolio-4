@@ -67,6 +67,7 @@ function Home() {
 
 export default Home;
 
+// CSS Modules
 const styles = {
     body: {
         textAlign: 'center',

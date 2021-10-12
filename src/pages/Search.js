@@ -16,6 +16,7 @@ function Search() {
 
 export default Search;
 
+// CSS Modules
 const styles = {
     body: {
         textAlign: 'center',

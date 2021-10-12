@@ -14,7 +14,7 @@ function Header(props) {
 
 export default Header;
 
-// CSS Module
+// CSS Modules
 const styles = {
     container: {
         fontFamily: 'casablanca-urw, sans-serif',
