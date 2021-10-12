@@ -13,26 +13,23 @@ import '../CSS/style.css';
 function Home() {
 
     const [featuredCardDetails, setFeaturedCardDetails] = useState({name: '',  card_images: [{image_url: ''}]});
-    const [statusCall, setStatusCall] = useState(null);
 
     // Using fetch, async, and await to get our API information. We are calling the function below.
     useEffect(() => {
         async function fetchAPI() {
             const url = `https://db.ygoprodeck.com/api/v7/randomcard.php`
             let responseForCardDetails;
+            let apiCallResponse;
 
             try {
                 responseForCardDetails = await fetch(url);
-
-                if (responseForCardDetails.status === 200) {
-                    setStatusCall(true);
-                }
-
+                apiCallResponse = true;
             } catch (e) {
-                setFeaturedCardDetails({name: 'Card Info',  card_images: [{image_url: cardBack}]});
+                setFeaturedCardDetails({name: 'API Unavailable',  card_images: [{image_url: cardBack}]});
+                apiCallResponse = false;
             } finally {
 
-                if (statusCall === true) {
+                if (apiCallResponse === true) {
                     const cardJsonData = await responseForCardDetails.json();
                     let cardInfo = [];
 
@@ -43,7 +40,7 @@ function Home() {
             }
         }
         fetchAPI();
-    }, [statusCall]);
+    }, []);
 
     return (
         <main className='home--main-container'>
