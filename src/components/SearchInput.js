@@ -147,8 +147,9 @@ const styles = {
         width: '55px',
         backgroundColor: '#071D3B',
         top: '7px',
+        left: '-2px',
         border: 'none',
-        borderRadius: '4px',
+        borderRadius: '0 4px 4px 0',
     },
     btnIcon: {
         color: '#FFC300',
