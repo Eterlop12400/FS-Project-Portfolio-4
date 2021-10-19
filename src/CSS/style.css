@@ -3,6 +3,10 @@ button:hover {
     cursor: pointer;
 }
 
+button:disabled {
+    cursor: not-allowed;
+}
+
 /* Styling for home page. */
 .home--main-container {
     width: 75%;
