@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.2a133f30.chunk.css",
-    "main.js": "/static/js/main.b3d21c05.chunk.js",
-    "main.js.map": "/static/js/main.b3d21c05.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.98cfcc0b.js",
-    "runtime-main.js.map": "/static/js/runtime-main.98cfcc0b.js.map",
-    "static/js/2.c32d81c8.chunk.js": "/static/js/2.c32d81c8.chunk.js",
-    "static/js/2.c32d81c8.chunk.js.map": "/static/js/2.c32d81c8.chunk.js.map",
-    "static/js/3.e6bf8d3e.chunk.js": "/static/js/3.e6bf8d3e.chunk.js",
-    "static/js/3.e6bf8d3e.chunk.js.map": "/static/js/3.e6bf8d3e.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.2a133f30.chunk.css.map": "/static/css/main.2a133f30.chunk.css.map",
-    "static/js/2.c32d81c8.chunk.js.LICENSE.txt": "/static/js/2.c32d81c8.chunk.js.LICENSE.txt",
-    "static/media/card-back.e20d1da4.png": "/static/media/card-back.e20d1da4.png",
-    "static/media/home-banner.1d825174.png": "/static/media/home-banner.1d825174.png"
+    "main.css": "/FS-Project-Portfolio-4/static/css/main.2a133f30.chunk.css",
+    "main.js": "/FS-Project-Portfolio-4/static/js/main.018aecee.chunk.js",
+    "main.js.map": "/FS-Project-Portfolio-4/static/js/main.018aecee.chunk.js.map",
+    "runtime-main.js": "/FS-Project-Portfolio-4/static/js/runtime-main.8045a811.js",
+    "runtime-main.js.map": "/FS-Project-Portfolio-4/static/js/runtime-main.8045a811.js.map",
+    "static/js/2.247af9c2.chunk.js": "/FS-Project-Portfolio-4/static/js/2.247af9c2.chunk.js",
+    "static/js/2.247af9c2.chunk.js.map": "/FS-Project-Portfolio-4/static/js/2.247af9c2.chunk.js.map",
+    "static/js/3.e6bf8d3e.chunk.js": "/FS-Project-Portfolio-4/static/js/3.e6bf8d3e.chunk.js",
+    "static/js/3.e6bf8d3e.chunk.js.map": "/FS-Project-Portfolio-4/static/js/3.e6bf8d3e.chunk.js.map",
+    "index.html": "/FS-Project-Portfolio-4/index.html",
+    "static/css/main.2a133f30.chunk.css.map": "/FS-Project-Portfolio-4/static/css/main.2a133f30.chunk.css.map",
+    "static/js/2.247af9c2.chunk.js.LICENSE.txt": "/FS-Project-Portfolio-4/static/js/2.247af9c2.chunk.js.LICENSE.txt",
+    "static/media/card-back.e20d1da4.png": "/FS-Project-Portfolio-4/static/media/card-back.e20d1da4.png",
+    "static/media/home-banner.1d825174.png": "/FS-Project-Portfolio-4/static/media/home-banner.1d825174.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.98cfcc0b.js",
-    "static/js/2.c32d81c8.chunk.js",
+    "static/js/runtime-main.8045a811.js",
+    "static/js/2.247af9c2.chunk.js",
     "static/css/main.2a133f30.chunk.css",
-    "static/js/main.b3d21c05.chunk.js"
+    "static/js/main.018aecee.chunk.js"
   ]
 }
